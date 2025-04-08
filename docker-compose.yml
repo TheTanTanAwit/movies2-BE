@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'django_db'
+      MYSQL_USER: 'django_user'
+      MYSQL_PASSWORD: 'django_password'
+      MYSQL_ROOT_PASSWORD: 'root_password'
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot_password"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+  web:
+    build: .
+    command: sh -c "sleep 60 && cd moviesite && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: django_db
+      DB_USER: django_user
+      DB_PASSWORD: django_password
+
+volumes:
+  db_data:
