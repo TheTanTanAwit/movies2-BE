@@ -1,24 +1,18 @@
-# Frontend of Movies
+# Backend 
 ## Prerequisites
-Make sure you have these installed and running on your machine
-1. [Movies-BE](https://github.com/TheTanTanAwit/Movies-BE)
-2. [Node](https://nodejs.org/en)
-## Clone Project
-Clone project with command: <br/>
-`git clone https://github.com/TheTanTanAwit/Movies-FE.git` <br/>
-After cloning cd into project: <br/>
-`cd Movies-FE` <br/>
-After cloning switch branch to master: <br/>
-`git checkout master`
-## First install all dependencies 
-`npm install`
+To Proceed make sure you have these installed:
+1. [Git](https://git-scm.com/)
+2. [Docker Desktop](https://www.docker.com/get-started/)
 
-## Move into the app
-`cd Movies-FE`
+## Clone
+To start. Clone the project first with command: <br/>
+`git clone https://github.com/TheTanTanAwit/Movies-BE.git` <br/><br/>
+After cloning cd into Project <br/>
+`cd movies2-BE`
+## Build Docker 
+Build Docker with this command: <br/>
+`docker-compose build`
 
-## Run app
-`ng serve`
-
-## Go to a browser and search this 
-`localhost:4200`
-
+## Run Docker
+Run the docker containers with this command: <br/>
+`docker-compose run`
